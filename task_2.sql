@@ -25,20 +25,21 @@ CREATE TABLE customers (
     address TEXT NOT NULL
 );
 
--- Create Orders table
+-- Create Orders table with the foreign key for customer_id
 CREATE TABLE orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_id INT,
+    customer_id INT,  -- foreign key reference to customers table
     order_date DATE NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)  -- Add foreign key constraint
 );
 
--- Create Order Details table
+-- Create Order Details table with foreign keys to orders and books
 CREATE TABLE order_details (
     orderdetailid INT AUTO_INCREMENT PRIMARY KEY,
-    order_id INT,
-    book_id INT,
+    order_id INT,  -- foreign key reference to orders table
+    book_id INT,   -- foreign key reference to books table
     quantity DOUBLE NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (book_id) REFERENCES books(book_id)
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),   -- Add foreign key constraint for orders
+    FOREIGN KEY (book_id) REFERENCES books(book_id)       -- Add foreign key constraint for books
 );
+
