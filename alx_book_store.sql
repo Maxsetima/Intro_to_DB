@@ -1,3 +1,6 @@
+-- Create the database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS alx_book_store;
+
 -- Use the alx_book_store database
 USE alx_book_store;
 
